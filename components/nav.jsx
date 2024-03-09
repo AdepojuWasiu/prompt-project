@@ -77,8 +77,8 @@ const Nav = () => {
                                alt="profile"
                                onClick={() => setToggleDropdown((prev) => !prev)}/> */}
                           {toggleDropdown 
-                            ? <RiCloseLine color='#fff' size={27} onClick = {() => setToggleDropdown(false)} />
-                             : <RiMenu3Line color='#fff' size={27} onClick = {() => setToggleDropdown(true) } /> 
+                            ? <RiCloseLine color='#808080' size={27} onClick = {() => setToggleDropdown(false)} />
+                             : <RiMenu3Line color='#808080' size={27} onClick = {() => setToggleDropdown(true) } /> 
                           
                           }
                           
