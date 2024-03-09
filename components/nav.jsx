@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders} from 'next-auth/react'
+import {RiMenu3Line, RiCloseLine } from 'react-icons/ri'
 
 
 
@@ -69,12 +70,18 @@ const Nav = () => {
             <div className="sm:hidden flex relative">
                 {session?.user ? (
                     <div className="flex" >
-                        <Image src="/assets/images/logo.svg"
+                        {/* <Image src="/assets/images/logo.svg"
                                width={37}
                                height={37}
                                className="rounded -full"
                                alt="profile"
-                               onClick={() => setToggleDropdown((prev) => !prev)}/>
+                               onClick={() => setToggleDropdown((prev) => !prev)}/> */}
+                          {toggleDropdown 
+                            ? <RiCloseLine color='#fff' size={27} onClick = {() => setToggleDropdown(false)} />
+                             : <RiMenu3Line color='#fff' size={27} onClick = {() => setToggleDropdown(true) } /> 
+                          
+                          }
+                          
                         {toggleDropdown && (
                             <div className="dropdown">
                                 <Link 
