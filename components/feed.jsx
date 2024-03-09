@@ -84,6 +84,10 @@ const Feed = () => {
                 className="search_input peer"/>
             </form>
 
+            <PromptCardList 
+                data = {posts}
+                handleTagClick = {handleTagClick} />
+
             {searchText ? (
                   <PromptCardList 
                   data = {searchedResults}
