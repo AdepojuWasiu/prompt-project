@@ -26,47 +26,16 @@ const Feed = () => {
     const [posts, setPosts] = useState([]);
 
     
-    // useEffect( () => {
-    //     const fetchPosts = async () => {
-    //         const response = await fetch('/api/prompt');
-    //         const data = await response.json();
-
-    //         setPosts(data);
-   
-    //     }
-    //     fetchPosts();
-
-    // }, []);
-
-
-    
-    const fetchPosts = async () => {
-        try {
-            const response = await fetch('/api/prompt');
+    useEffect( () => {
+        const fetchPosts = async () => {
+            const response = await fetch('/api/prompt', {next: {revalidate: 10}});
             const data = await response.json();
 
             setPosts(data);
-
-        } catch (error) {
-            console.error('Failed to fetch posts:', error);
+   
         }
-    };
+        fetchPosts();
 
-    const longPoll = async () => {
-        try {
-            await fetchPosts(); // Initial fetch
-            while (true) {
-                // Continuously poll for updates
-                await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
-                await fetchPosts();
-            }
-        } catch (error) {
-            console.error('Long polling error:', error);
-        }
-    };
-
-    useEffect(() => {
-        longPoll(); // Start long polling
     }, []);
 
 
@@ -114,7 +83,6 @@ const Feed = () => {
                 required
                 className="search_input peer"/>
             </form>
-
 
             {searchText ? (
                   <PromptCardList 
