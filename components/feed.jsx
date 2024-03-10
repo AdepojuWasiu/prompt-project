@@ -1,6 +1,7 @@
 "use client";
 
 import { useState,useEffect } from "react";
+import CreatePrompt from "@app/create-prompt/page";
 
 import PromptCard from "./promptcard";
 
@@ -35,6 +36,10 @@ const Feed = () => {
    
         }
         fetchPosts();
+
+        if(CreatePrompt) {
+            fetchPosts
+        };
 
     }, []);
 
