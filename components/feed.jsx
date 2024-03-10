@@ -39,7 +39,7 @@ const Feed = () => {
    
         }
 
-        if(session?.user.id) fetchPosts();
+        if(session) fetchPosts();
        
 
     }, []);
