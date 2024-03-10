@@ -36,37 +36,37 @@ const Feed = () => {
         }
         fetchPosts();
 
-    }, []);
+    });
 
 
-    // const filterPrompts = (searchtext) => {
-    //     const regex = new RegExp(searchtext, "i");
-    //     return posts.filter(
-    //         (item) => 
-    //         regex.test(item.creator.username) || 
-    //         regex.test(item.tag) ||
-    //         regex.test(item.prompt)
-    //     );
-    // };
+    const filterPrompts = (searchtext) => {
+        const regex = new RegExp(searchtext, "i");
+        return posts.filter(
+            (item) => 
+            regex.test(item.creator.username) || 
+            regex.test(item.tag) ||
+            regex.test(item.prompt)
+        );
+    };
 
-    // const handleSearchChange = (e) => {
-    //     clearTimeout(searchTimeout);
-    //     setSearchText(e.target.value);
+    const handleSearchChange = (e) => {
+        clearTimeout(searchTimeout);
+        setSearchText(e.target.value);
 
-    //     setSearchTimeout(
-    //         setTimeout( () => {
-    //             const searchResult = filterPrompts(e.target.value);
-    //             setSearchedResults(searchResult);
-    //         },500)
-    //     );    
-    // };
+        setSearchTimeout(
+            setTimeout( () => {
+                const searchResult = filterPrompts(e.target.value);
+                setSearchedResults(searchResult);
+            },500)
+        );    
+    };
 
-    // const handleTagClick = (tagName) => {
-    //     setSearchText(tagName);
+    const handleTagClick = (tagName) => {
+        setSearchText(tagName);
 
-    //     const searchResult = filterPrompts(tagName);
-    //     setSearchedResults(searchResult);
-    // };
+        const searchResult = filterPrompts(tagName);
+        setSearchedResults(searchResult);
+    };
 
    
     
@@ -79,18 +79,15 @@ const Feed = () => {
                 type="text"
                 placeholder="Search for prompt, tag or username"
                 value={searchText}
-                // onChange={handleSearchChange}
+                onChange={handleSearchChange}
                 required
                 className="search_input peer"/>
             </form>
 
-            <PromptCardList 
-                data = {posts}
-                handleTagClick = {() => {}} />
 
 
 
-            {/* {searchText ? (
+             {searchText ? (
                   <PromptCardList 
                   data = {searchedResults}
                   handleTagClick = {handleTagClick} />
@@ -99,7 +96,7 @@ const Feed = () => {
                 <PromptCardList 
                 data = {posts}
                 handleTagClick = {handleTagClick} />
-            )}; */}
+            )}; 
 
         </section>
     )
