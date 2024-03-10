@@ -79,14 +79,16 @@ const Feed = () => {
                 type="text"
                 placeholder="Search for prompt, tag or username"
                 value={searchText}
-                onChange={handleSearchChange}
+                // onChange={handleSearchChange}
                 required
                 className="search_input peer"/>
             </form>
 
             <PromptCardList 
-                  data = {searchedResults}
-                  handleTagClick = {handleTagClick} />
+                data = {posts}
+                handleTagClick = {() => {}} />
+
+
 
             {/* {searchText ? (
                   <PromptCardList 
