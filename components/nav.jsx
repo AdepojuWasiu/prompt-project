@@ -56,7 +56,7 @@ const Nav = () => {
                     key= {provider.name}
                     onClick={() => signIn(provider.id)}
                     className="black_btn">
-                        SignIn
+                        Sign In
                     </button>
                    ))
 
@@ -116,7 +116,7 @@ const Nav = () => {
                     key= {provider.name}
                     onClick={() => signIn(provider.id)}
                     className="black_btn">
-                        SignIn
+                        Sign In
                     </button>
                    ))
 
