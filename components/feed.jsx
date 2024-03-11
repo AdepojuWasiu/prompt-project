@@ -1,7 +1,6 @@
 "use client";
 
 import { useState,useEffect } from "react";
-import { useSession } from "next-auth/react";
 
 import PromptCard from "./promptcard";
 
@@ -20,7 +19,6 @@ const PromptCardList = ({data, handleTagClick}) => {
 
 
 const Feed = () => {
-    const {data: session} = useSession()
 
 
     const [searchText, setSearchText] = useState("");
@@ -36,10 +34,15 @@ const Feed = () => {
             const data = await response.json();
 
             setPosts(data);
+            
    
-        }
+        };
 
         fetchPosts();
+
+        const intervalId = setInterval(fetchPosts, 10000);
+
+        return () => clearInterval(intervalId); // Cleanup function
        
 
     }, []);
@@ -102,7 +105,7 @@ const Feed = () => {
                 <PromptCardList 
                 data = {posts}
                 handleTagClick = {handleTagClick} />
-            )}; 
+            )}
 
         </section>
     )
